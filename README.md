@@ -10,7 +10,14 @@
 Code to create an EKS cluster and deploy vulnerable containers for Prisma Cloud Compute Demostrations
 
 # Prerequisites
-AWS account with Admin Access and AWS CLI configured
+AWS account with and IAM account with Admin Access and an Access Key and Secret Key.  Configure the AWS CLI with your Access Key and Secret Key.
+
 Terraform
 
 # Create EKS Cluster
+
+Clone repo to a working directory and cd to the eks-cluster directory
+`terraform init`
+If initialzation is successful, run
+`terraform apply out="filename"`
+
