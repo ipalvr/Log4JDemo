@@ -17,7 +17,18 @@ Terraform
 # Create EKS Cluster
 
 Clone repo to a working directory and cd to the eks-cluster directory
+
 `terraform init`
+
 If initialzation is successful, run
-`terraform apply out="filename"`
+
+`terraform plan out="filename"`
+
+Build cluster
+
+`terraform apply "filename"`
+
+Once the build is complete, update kubeconfig
+
+`aws eks --region "region" update-kubeconfig --name "cluster_name"`
 
