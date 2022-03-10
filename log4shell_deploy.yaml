@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vul-app1
+  namespace: dirty-net2
+  labels:
+    app: vul-app1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vul-app1
+  template:
+    metadata:
+      labels:
+        app: vul-app1
+    spec:
+      containers:
+      - name: vul-app1
+        image: fefefe8888/l4s-demo-app:1.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vul-app1
+  namespace: dirty-net2
+  labels:
+    app: vul-app1
+spec:
+  type: ClusterIP
+  selector:
+    app: vul-app1
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vul-app2
+  namespace: dirty-net2
+  labels:
+    app: vul-app2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vul-app2
+  template:
+    metadata:
+      labels:
+        app: vul-app2
+    spec:
+      containers:
+      - name: vul-app2
+        image: fefefe8888/l4s-demo-app:1.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vul-app2
+  namespace: dirty-net2
+  labels:
+    app: vul-app2
+spec:
+  type: ClusterIP
+  selector:
+    app: vul-app2
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: att-svr
+  namespace: dirty-net2
+  labels:
+    app: att-svr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: att-svr
+  template:
+    metadata:
+      labels:
+        app: att-svr
+    spec:
+      containers:
+      - name: att-svr
+        image: fefefe8888/l4s-demo-svr:1.0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: att-svr
+  namespace: dirty-net2
+  labels:
+    app: att-svr
+spec:
+  type: ClusterIP
+  selector:
+    app: att-svr
+  ports:
+    - name: ldap
+      protocol: TCP
+      port: 1389
+      targetPort: 1389
+    - name: http
+      protocol: TCP
+      port: 8888
+      targetPort: 8888
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-attack-machine
+  namespace: dirty-net2
+spec:
+  containers:
+  - name: attack-machine
+    image: fefefe8888/my-ubuntu:18.04
+    command:
+     - tail
+     - "-f"
+     - /dev/null
