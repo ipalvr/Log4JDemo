@@ -32,3 +32,21 @@ Once the build is complete, update kubeconfig
 ```
 aws eks --region "region" update-kubeconfig --name "cluster_name"
 ```
+# Install Prisma Cloud Defender
+
+Create twistlock namespace
+```
+kubectl create ns twistlock
+```
+Change your namespace context
+```
+kubectl config set-context $(kubectl config current-context) --namespace=twistlock
+```
+Download YAML directly from the Prisma Cloud Compute console and instal the Defender as a daemonset
+```
+kubectl apply -f daemonset.yaml
+```
+Confirm twistlock containers are runnning
+```
+kubectl get pods
+```
