@@ -78,10 +78,10 @@ Worked...
 curl 'https://us-east1.cloud.twistlock.com/us-1-111573457/api/v1/collections?project=Central+Console' \
   -k \
   -X POST \
-  -H 'Authorization: Bearer $TOKEN \
+  -H 'Authorization: Bearer $TOKEN' \
   -H 'Content-Type: application/json' \
   -d \
-'{"name":"Weib Test 3","containers":["*"],"hosts":["*"],"images":["amazon/amazon-ecs-agent:latest"],"labels":["*"],"appIDs":["*"],"functions":["*"],"namespaces":["*"],"accountIDs":["*"],"codeRepos":["*"],"clusters":["*"],"system":false,"color":"#7CC592"}'
+'{"name":"Weib Test 5","containers":["*"],"hosts":["*"],"images":["amazon/amazon-ecs-agent:latest"],"labels":["*"],"appIDs":["*"],"functions":["*"],"namespaces":["*"],"accountIDs":["*"],"codeRepos":["*"],"clusters":["*"],"system":false,"color":"#7CC592"}'
 ```
 
 # Add Runtime Rules
