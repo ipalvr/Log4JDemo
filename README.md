@@ -3,6 +3,13 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Log4JDemo](#log4jdemo)
+  - [Prerequisites](#prerequisites)
+  - [Create EKS Cluster](#create-eks-cluster)
+  - [Install Prisma Cloud Defender](#install-prisma-cloud-defender)
+  - [Create Collections, Policies, and WAAS Rules](#create-collections-policies-and-waas-rules)
+  - [Add Collections](#add-collections)
+  - [Add Runtime Rules](#add-runtime-rules)
+  - [Add WAAS Rule](#add-waas-rule)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
