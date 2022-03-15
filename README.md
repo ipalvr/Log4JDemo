@@ -122,5 +122,5 @@ curl -k \
   -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NDQ2MjEyLCJpc3MiOiJ0d2lzdGxvY2sifQ.9mVarHMyuiRWNWe4COJOSfiTbvMH2zl3OXoqkNxVmjI' \
   -H 'Content-Type: application/json' \
   -X GET \
-  NEED WAAS API - https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
   | jq '.' > waas_model_rules.json
