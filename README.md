@@ -64,19 +64,15 @@ kubectl get pods
 Create Collections, Policies, and WAAS Rules
 --------------------------------------------
 
-Get token and add as a variable
-```
-curl -k -H "Content-Type: application/json" -X POST -d '{"username":"admin","password":"password"}' https://api.prismacloud.io/api/v22.01/authenticate
-```
 CSPM  
 ```
 curl --request POST --url https://api.prismacloud.io/login --header 'content-type: application/json; charset=UTF-8' --data '{"customerName":"string","password":"string","prismaId":"string","username":"string"}'
 ```
 
-Add Collections
----------------
+Create Collections
+------------------
 
-Go to System -> Utilities -> Path to Console to get the url https://us-east1.cloud.twistlock.com/us-1-111573457
+Go to System -> Utilities -> Path to Console to get the url 
 Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
 
 ```
@@ -128,3 +124,21 @@ curl -k -v \
 
 Add WAAS Rule
 -------------
+
+Get existing WAAS Rules
+
+curl -k \
+  -H 'authorization: Bearer <TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -X GET \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
+  | jq '.' > waas_rules.json
+
+  Create an WAAS Rule
+
+  curl -k -v \
+  -H 'authorization: Bearer <TOKEN>' \
+  -X POST \
+  -H "Content-Type:application/json" \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
+  --data-binary "@waas_rules.json"

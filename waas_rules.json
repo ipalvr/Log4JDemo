@@ -1,0 +1,159 @@
+{
+	"name": "vul-app-2",
+	"collections": [{
+		"name": "Log4Shell demo - vul-app-2"
+	}],
+	"applicationsSpec": [{
+		"appID": "app-0001",
+		"sessionCookieSameSite": "Lax",
+		"customBlockResponse": {},
+		"banDurationMinutes": 5,
+		"certificate": {
+			"encrypted": ""
+		},
+		"tlsConfig": {
+			"minTLSVersion": "1.2",
+			"metadata": {
+				"notAfter": "0001-01-01T00:00:00Z",
+				"issuerName": "",
+				"subjectName": ""
+			},
+			"HSTSConfig": {
+				"enabled": false,
+				"maxAgeSeconds": 31536000,
+				"includeSubdomains": false,
+				"preload": false
+			}
+		},
+		"dosConfig": {
+			"enabled": false,
+			"alert": {},
+			"ban": {}
+		},
+		"apiSpec": {
+			"endpoints": [{
+				"host": "*",
+				"basePath": "*",
+				"exposedPort": 0,
+				"internalPort": 8080,
+				"tls": false,
+				"http2": false
+			}],
+			"effect": "disable",
+			"fallbackEffect": "disable",
+			"skipLearning": false
+		},
+		"botProtectionSpec": {
+			"userDefinedBots": [],
+			"knownBotProtectionsSpec": {
+				"searchEngineCrawlers": "disable",
+				"businessAnalytics": "disable",
+				"educational": "disable",
+				"news": "disable",
+				"financial": "disable",
+				"contentFeedClients": "disable",
+				"archiving": "disable",
+				"careerSearch": "disable",
+				"mediaSearch": "disable"
+			},
+			"unknownBotProtectionSpec": {
+				"generic": "disable",
+				"webAutomationTools": "disable",
+				"webScrapers": "disable",
+				"apiLibraries": "disable",
+				"httpLibraries": "disable",
+				"botImpersonation": "disable",
+				"browserImpersonation": "disable",
+				"requestAnomalies": {
+					"threshold": 9,
+					"effect": "disable"
+				}
+			},
+			"sessionValidation": "disable",
+			"interstitialPage": false,
+			"jsInjectionSpec": {
+				"enabled": false,
+				"timeoutEffect": "disable"
+			},
+			"reCAPTCHASpec": {
+				"enabled": false,
+				"siteKey": "",
+				"secretKey": {
+					"encrypted": ""
+				},
+				"type": "checkbox",
+				"allSessions": true,
+				"successExpirationHours": 24
+			}
+		},
+		"networkControls": {
+			"advancedProtectionEffect": "alert",
+			"subnets": {
+				"enabled": false,
+				"allowMode": true,
+				"fallbackEffect": "alert"
+			},
+			"countries": {
+				"enabled": false,
+				"allowMode": true,
+				"fallbackEffect": "alert"
+			}
+		},
+		"body": {
+			"inspectionSizeBytes": 131072
+		},
+		"intelGathering": {
+			"infoLeakageEffect": "alert",
+			"removeFingerprintsEnabled": true
+		},
+		"maliciousUpload": {
+			"effect": "disable",
+			"allowedFileTypes": [],
+			"allowedExtensions": []
+		},
+		"csrfEnabled": true,
+		"clickjackingEnabled": true,
+		"sqli": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"xss": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"attackTools": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"shellshock": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"malformedReq": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"cmdi": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"lfi": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"codeInjection": {
+			"effect": "alert",
+			"exceptionFields": []
+		},
+		"remoteHostForwarding": {},
+		"customRules": [{
+			"_id": 37,
+			"action": "audit",
+			"effect": "prevent"
+		}, {
+			"_id": 36,
+			"action": "audit",
+			"effect": "prevent"
+		}]
+	}]
+}
