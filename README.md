@@ -93,12 +93,14 @@ Add Runtime Rules
 
 Add individual run method (-v is verbose curl logging)
 
+```
 curl -k -v \
   -H 'authorization: Bearer <TOKEN>' \
   -X POST \
   -H "Content-Type:application/json" \
   https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
   --data-binary "@vul_app_1.json"
+```
 
 Export / Import Method
 
