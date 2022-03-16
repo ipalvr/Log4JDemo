@@ -80,7 +80,7 @@ Go to System -> Utilities -> Path to Console to get the url https://us-east1.clo
 Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
 
 ```
-curl -k -v POST -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NDQ2MjEyLCJpc3MiOiJ0d2lzdGxvY2sifQ.9mVarHMyuiRWNWe4COJOSfiTbvMH2zl3OXoqkNxVmjI' -H 'Content-Type: application/json' -d '{"name":"Weib Log4Shell Demo - vul-app-1","images":["fefefe8888/l4s-demo-app:1.0"],"containers":["vul-app-1"],"hosts":["*"],"namespaces":["*"],"labels":["*"],"accountIDs":["*"],"clusters":["*"]}' "https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
+curl -k -v POST -H 'authorization: Bearer <TOKEN>' -H 'Content-Type: application/json' -d '{"name":"Weib Log4Shell Demo - vul-app-3","images":["fefefe8888/l4s-demo-app:1.0"],"containers":["vul-app-3"],"hosts":["*"],"namespaces":["*"],"labels":["*"],"accountIDs":["*"],"clusters":["*"]}' "https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
 ```
 
 ```
@@ -91,11 +91,22 @@ curl -k -v POST -H 'authorization: Bearer <TOKEN>' -H 'Content-Type: application
 Add Runtime Rules
 -----------------
 
+Add individual run method (-v is verbose curl logging)
+
+curl -k -v \
+  -H 'authorization: Bearer <TOKEN>' \
+  -X POST \
+  -H "Content-Type:application/json" \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
+  --data-binary "@vul_app_1.json"
+
+Export / Import Method
+
 First, export the existing rules.
 
 ```
  curl -k \
-  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NDQ2MjEyLCJpc3MiOiJ0d2lzdGxvY2sifQ.9mVarHMyuiRWNWe4COJOSfiTbvMH2zl3OXoqkNxVmjI' \
+  -H 'authorization: Bearer <TOKEN>' \
   -H 'Content-Type: application/json' \
   -X GET \
   https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
@@ -105,8 +116,8 @@ First, export the existing rules.
 Modify the saved JSON with the updates, including any new rule insertions.
 
 ```
-curl -k \
-  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NDQ2MjEyLCJpc3MiOiJ0d2lzdGxvY2sifQ.9mVarHMyuiRWNWe4COJOSfiTbvMH2zl3OXoqkNxVmjI' \
+curl -k -v \
+  -H 'authorization: Bearer <TOKEN>' \
   -X PUT \
   -H "Content-Type:application/json" \
   https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
@@ -115,12 +126,3 @@ curl -k \
 
 Add WAAS Rule
 -------------
-
-First, export the existing WAAS rules.
-
-curl -k \
-  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NDQ2MjEyLCJpc3MiOiJ0d2lzdGxvY2sifQ.9mVarHMyuiRWNWe4COJOSfiTbvMH2zl3OXoqkNxVmjI' \
-  -H 'Content-Type: application/json' \
-  -X GET \
-  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
-  | jq '.' > waas_model_rules.json

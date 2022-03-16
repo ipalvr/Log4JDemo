@@ -1,0 +1,81 @@
+{
+    "modified": "2022-02-28T18:48:29.708Z",
+    "owner": "mweibeler_paloaltonetworks_com",
+    "name": "vul-app-2",
+    "previousName": "",
+    "notes": "Log4Shell demo - vul-app-2",
+    "collections": [
+      {
+        "hosts": [
+          "*"
+        ],
+        "images": [
+          "fefefe8888/l4s-demo-app:1.0"
+        ],
+        "labels": [
+          "*"
+        ],
+        "containers": [
+          "vul-app-2"
+        ],
+        "namespaces": [
+          "*"
+        ],
+        "accountIDs": [
+          "*"
+        ],
+        "clusters": [
+          "*"
+        ],
+        "name": "Log4Shell demo - vul-app-2",
+        "owner": "mweibeler_paloaltonetworks_com",
+        "modified": "2022-02-28T18:48:29.708Z",
+        "color": "",
+        "description": "",
+        "system": false,
+        "prisma": false
+      }
+    ],
+    "advancedProtection": true,
+    "processes": {
+      "effect": "prevent",
+      "blacklist": [],
+      "whitelist": [],
+      "checkCryptoMiners": true,
+      "checkLateralMovement": true,
+      "checkParentChild": true,
+      "checkSuidBinaries": true
+    },
+    "network": {
+      "effect": "alert",
+      "blacklistIPs": [],
+      "blacklistListeningPorts": [],
+      "whitelistListeningPorts": [],
+      "blacklistOutboundPorts": [],
+      "whitelistOutboundPorts": [],
+      "whitelistIPs": [],
+      "skipModifiedProc": false,
+      "detectPortScan": true,
+      "skipRawSockets": false
+    },
+    "dns": {
+      "effect": "prevent",
+      "blacklist": [],
+      "whitelist": []
+    },
+    "filesystem": {
+      "effect": "prevent",
+      "blacklist": [],
+      "whitelist": [],
+      "checkNewFiles": true,
+      "backdoorFiles": true,
+      "skipEncryptedBinaries": false,
+      "suspiciousELFHeaders": true
+    },
+    "kubernetesEnforcement": true,
+    "cloudMetadataEnforcement": true,
+    "wildFireAnalysis": "alert",
+    "policyType": "containerRuntime",
+    "exportTime": "",
+    "exportBy": "mweibeler_paloaltonetworks_com"
+  }
