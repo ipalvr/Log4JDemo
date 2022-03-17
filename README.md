@@ -138,7 +138,7 @@ curl -k \
 
   curl -k -v \
   -H 'authorization: Bearer <TOKEN>' \
-  -X POST \
+  POST \
   -H "Content-Type:application/json" \
   https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
-  --data-binary "@waas_rules.json"
+  --data-binary "@waas_rules_2.json"
