@@ -2,7 +2,7 @@
     set -ex
     # Enter Prisma Cloud URL and Token
     var_url="https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
-    var_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibXdlaWJlbGVyX3BhbG9hbHRvbmV0d29ya3NfY29tIiwicm9sZSI6ImFkbWluIiwiZ3JvdXBzIjpbImFkbWlucyIsImRldm9wcyJdLCJyb2xlUGVybXMiOltbMjU1LDI1NSwyNTUsMjU1LDI1NSwxMjcsMV0sWzI1NSwyNTUsMjU1LDI1NSwyNTUsMTI3LDFdXSwicGVybWlzc2lvbnMiOlt7InByb2plY3QiOiJDZW50cmFsIENvbnNvbGUifV0sInNlc3Npb25UaW1lb3V0U2VjIjo4NjQwMCwiZXhwIjoxNjQ3NTMzNzE4LCJpc3MiOiJ0d2lzdGxvY2sifQ.ht_6Ucnx3LF4QYtYhz0RQPxA2c4PWB2iDNeJ0Pgcac0"
+    var_token=
     # var_vul_app_image="fefefe8888/l4s-demo-app:1.0"
 
     # Stop learning for vulnerable app container
