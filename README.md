@@ -20,7 +20,6 @@ Prerequisites
 -------------
 
 AWS account with and IAM account with Admin Access and an Access Key and Secret Key.  Configure the AWS CLI with your Access Key and Secret Key.
-
 Terraform
 
 Create EKS Cluster
@@ -61,84 +60,59 @@ Confirm twistlock containers are runnning
 ```
 kubectl get pods
 ```
-Create Collections, Policies, and WAAS Rules
---------------------------------------------
-
-CSPM  
-```
-curl --request POST --url https://api.prismacloud.io/login --header 'content-type: application/json; charset=UTF-8' --data '{"customerName":"string","password":"string","prismaId":"string","username":"string"}'
-```
-
-Create Collections
-------------------
-
-Go to System -> Utilities -> Path to Console to get the url 
-Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
-
-```
-curl -k -v POST -H 'authorization: Bearer <TOKEN>' -H 'Content-Type: application/json' -d '{"name":"Weib Log4Shell Demo - vul-app-3","images":["fefefe8888/l4s-demo-app:1.0"],"containers":["vul-app-3"],"hosts":["*"],"namespaces":["*"],"labels":["*"],"accountIDs":["*"],"clusters":["*"]}' "https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
-```
-
-```
-curl -k -v POST -H 'authorization: Bearer <TOKEN>' -H 'Content-Type: application/json' -d '{"name":"Weib Log4Shell Demo - vul-app-1","images":["fefefe8888/l4s-demo-app:1.0"],"containers":["vul-app-1"],"hosts":["*"],"namespaces":["*"],"labels":["*"],"accountIDs":["*"],"clusters":["*"]}' "https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
-```
-
-
-Add Runtime Rules
+Get url and token
 -----------------
 
-Add individual run method (-v is verbose curl logging)
+Go to System -> Utilities -> Path to Console to get the url (SaaS Version)
+Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
+
+Change Container State to "Active" state and Create Collections
+---------------------------------------------------------------
+
+Add your console url and token in cwp_cfg.sh and run;
+```
+bash cwp_cfg.sh
+```
+
+Add Runtime Rules ans WAAS Rules
+--------------------------------
+
+You can add the Runtime Rules either by importing the JSON files in the Console or using the API.
+
+Import Runtime and WAAS Rules in the Console
+
+Use vul_app1.json and vul_app2.json  Defend -> Runtime -> Container Policy -> Import
+Use waas_rules.json   Defend -> WAAS -> Container -> Import
+
+Import Runtime Rules using the API
+----------------------------------
+
+```
+curl -k \
+  -H 'authorization: Bearer <TOKEN>' \
+  -X POST \
+  -H "Content-Type:application/json" \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
+  --data-binary "@vul_app1.json"
+```
+```
+curl -k \
+  -H 'authorization: Bearer <TOKEN>' \
+  -X POST \
+  -H "Content-Type:application/json" \
+  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
+  --data-binary "@vul_app2.json"
+  ```
+
+
+Import WAAS Rules using the API
+----------------------------------
 
 ```
 curl -k -v \
   -H 'authorization: Bearer <TOKEN>' \
   -X POST \
   -H "Content-Type:application/json" \
-  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
-  --data-binary "@vul_app_1.json"
-```
-
-Export / Import Method
-
-First, export the existing rules.
-
-```
- curl -k \
-  -H 'authorization: Bearer <TOKEN>' \
-  -H 'Content-Type: application/json' \
-  -X GET \
-  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
-  | jq '.' > model_rules.json
-```  
-
-Modify the saved JSON with the updates, including any new rule insertions.
-
-```
-curl -k -v \
-  -H 'authorization: Bearer <TOKEN>' \
-  -X PUT \
-  -H "Content-Type:application/json" \
-  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/runtime/container \
-  --data-binary "@model_rules.json"
-```
-
-Add WAAS Rule
--------------
-
-Get existing WAAS Rules
-
-curl -k \
-  -H 'authorization: Bearer <TOKEN>' \
-  -H 'Content-Type: application/json' \
-  -X GET \
-  https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
-  | jq '.' > waas_rules.json
-
-  Create an WAAS Rule
-
-  curl -k -v \
-  -H 'authorization: Bearer <TOKEN>' \
-  POST \
-  -H "Content-Type:application/json" \
   https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/policies/firewall/app/container \
   --data-binary "@waas_rules_2.json"
+```

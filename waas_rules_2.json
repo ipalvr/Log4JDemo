@@ -1,7 +1,7 @@
 {
   "modified": "2022-02-28T18:48:32.01Z",
   "owner": "mweibeler_paloaltonetworks_com",
-  "name": "vul-app-2",
+  "name": "vul-app2",
   "previousName": "",
   "collections": [
     {
@@ -15,7 +15,7 @@
         "*"
       ],
       "containers": [
-        "vul-app-2"
+        "vul-app2"
       ],
       "namespaces": [
         "*"
@@ -26,7 +26,7 @@
       "clusters": [
         "*"
       ],
-      "name": "Log4Shell demo - vul-app-2",
+      "name": "Log4Shell demo - vul-app2",
       "owner": "mweibeler_paloaltonetworks_com",
       "modified": "2022-02-28T18:48:14.951Z",
       "color": "#b2fdcd",
@@ -37,7 +37,7 @@
   ],
   "applicationsSpec": [
     {
-      "appID": "app-0001",
+      "appID": "app-0002",
       "customBlockResponse": {},
       "banDurationMinutes": 5,
       "certificate": {
