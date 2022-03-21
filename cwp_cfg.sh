@@ -2,15 +2,12 @@
     set -ex
 
     # Enter Prisma Cloud URL and Token
-<<<<<<< HEAD
     var_url="https://console-master-demo.mweibeler.demo.twistlock.com"
     var_token=""
     # var_vapp_img="nginx:latest"
-=======
     var_url="https://console-master-demo.mweibeler.demo.twistlock.com/api/v1/collections?project=Central+Console"
     var_token=
     # var_vul_app_image="fefefe8888/l4s-demo-app:1.0"
->>>>>>> 053f47954062a89075d57077cbbf65f15b2821b3
 
     # Stop learning for vulnerable app container
     PROFILE_ID=$(curl -k -X GET -H "authorization: Bearer ${var_token}" -H 'Content-Type: application/json' "${var_url}/api/v1/profiles/container" | jq -r ' .[] | select(.image == "fefefe8888/l4s-demo-app:1.0") | ._id ')
