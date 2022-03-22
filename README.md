@@ -6,10 +6,12 @@
   - [Prerequisites](#prerequisites)
   - [Create EKS Cluster](#create-eks-cluster)
   - [Install Prisma Cloud Defender](#install-prisma-cloud-defender)
-  - [Create Collections, Policies, and WAAS Rules](#create-collections-policies-and-waas-rules)
-  - [Add Collections](#add-collections)
-  - [Add Runtime Rules](#add-runtime-rules)
-  - [Add WAAS Rule](#add-waas-rule)
+  - [Get url and token](#get-url-and-token)
+  - [Deply containers](#deply-containers)
+  - [Change Container State to "Active" state and Create Collections](#change-container-state-to-active-state-and-create-collections)
+  - [Add Runtime Rules ans WAAS Rules](#add-runtime-rules-ans-waas-rules)
+  - [Import Runtime Rules using the API](#import-runtime-rules-using-the-api)
+  - [Import WAAS Rules using the API - (Not Working, import)](#import-waas-rules-using-the-api---not-working-import)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

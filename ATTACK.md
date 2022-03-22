@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Running the Demo](#running-the-demo)
+- [Encode with base64 your command](#encode-with-base64-your-command)
+- [Execute the attack without obfuscation](#execute-the-attack-without-obfuscation)
+- [Execute the attack with obfuscation](#execute-the-attack-with-obfuscation)
+- [Confirm that the code execution was successful](#confirm-that-the-code-execution-was-successful)
+- [Connect to runnint pod](#connect-to-runnint-pod)
+- [Delete file inside the container](#delete-file-inside-the-container)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 Running the Demo
 ----------------
 
