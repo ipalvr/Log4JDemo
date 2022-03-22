@@ -1,9 +1,9 @@
 {
     "modified": "2022-02-28T18:48:29.708Z",
     "owner": "mweibeler_paloaltonetworks_com",
-    "name": "vul-app-1",
+    "name": "vul-app1",
     "previousName": "",
-    "notes": "Log4Shell demo - vul-app-1",
+    "notes": "Log4Shell demo - vul-app1",
     "collections": [
       {
         "hosts": [
@@ -27,7 +27,7 @@
         "clusters": [
           "*"
         ],
-        "name": "Log4Shell demo - vul-app-1",
+        "name": "Log4Shell demo - vul-app1",
         "owner": "mweibeler_paloaltonetworks_com",
         "modified": "2022-02-28T18:48:29.708Z",
         "color": "",
@@ -36,7 +36,7 @@
         "prisma": false
       }
     ],
-    "advancedProtection": false,
+    "advancedProtection": true,
     "processes": {
       "effect": "alert",
       "blacklist": [],

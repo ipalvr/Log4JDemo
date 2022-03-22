@@ -171,13 +171,9 @@
       },
       "remoteHostForwarding": {},
       "customRules": [{
-          "_id": 37,
+          "_id": 35,
           "action": "audit",
           "effect": "prevent"
-      },  {
-          "_id": 36,
-          "action": "audit",
-          "effect":"prevent" 
       }]
     }
   ],

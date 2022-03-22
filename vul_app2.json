@@ -1,9 +1,9 @@
 {
     "modified": "2022-02-28T18:48:29.708Z",
     "owner": "mweibeler_paloaltonetworks_com",
-    "name": "vul-app-2",
+    "name": "vul-app2",
     "previousName": "",
-    "notes": "Log4Shell demo - vul-app-2",
+    "notes": "Log4Shell demo - vul-app2",
     "collections": [
       {
         "hosts": [
@@ -16,7 +16,7 @@
           "*"
         ],
         "containers": [
-          "vul-app-2"
+          "vul-app2"
         ],
         "namespaces": [
           "*"
@@ -27,7 +27,7 @@
         "clusters": [
           "*"
         ],
-        "name": "Log4Shell demo - vul-app-2",
+        "name": "Log4Shell demo - vul-app2",
         "owner": "mweibeler_paloaltonetworks_com",
         "modified": "2022-02-28T18:48:29.708Z",
         "color": "",

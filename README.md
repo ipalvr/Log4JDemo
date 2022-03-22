@@ -66,6 +66,17 @@ Get url and token
 Go to System -> Utilities -> Path to Console to get the url (SaaS Version)
 Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
 
+Deply containers
+----------------
+Create dirty-net namespace
+```
+kubectl create namespace dirty-net2 
+```
+Apply Deployment
+```
+kubectl apply -f log4shell_deploy.yaml
+```
+
 Change Container State to "Active" state and Create Collections
 ---------------------------------------------------------------
 
@@ -105,7 +116,7 @@ curl -k \
   ```
 
 
-Import WAAS Rules using the API
+Import WAAS Rules using the API - (Not Working, import)
 ----------------------------------
 
 ```
