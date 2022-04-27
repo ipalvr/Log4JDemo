@@ -58,9 +58,9 @@ Download YAML directly from the Prisma Cloud Compute console and instal the Defe
 ```
 kubectl apply -f daemonset.yaml
 ```
-Delete Defenders from your cluster
+(To Delete Defenders from your cluster)
 ```
-lubectl delete -f daemonset.yaml
+kubectl delete -f daemonset.yaml
 ```
 Confirm twistlock containers are runnning
 ```
