@@ -58,6 +58,10 @@ Download YAML directly from the Prisma Cloud Compute console and instal the Defe
 ```
 kubectl apply -f daemonset.yaml
 ```
+Delete Defenders from your cluster
+```
+lubectl delete -f daemonset.yaml
+```
 Confirm twistlock containers are runnning
 ```
 kubectl get pods
@@ -68,7 +72,7 @@ Get url and token
 Go to System -> Utilities -> Path to Console to get the url (SaaS Version)
 Go to System -> Utilities -> API Token to copy the Token details and replace <TOKEN> with a valid token.
 
-Deply containers
+Deploy containers
 ----------------
 Create dirty-net namespace
 ```
@@ -82,7 +86,7 @@ kubectl apply -f log4shell_deploy.yaml
 Change Container State to "Active" state and Create Collections
 ---------------------------------------------------------------
 
-Add your console url and token in cwp_cfg.sh and run;
+DRAFT - Add your console url and token in cwp_cfg.sh and run;
 ```
 bash cwp_cfg.sh
 ```
