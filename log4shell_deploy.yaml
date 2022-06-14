@@ -1,8 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dirty-net
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vul-app1
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: vul-app1
 spec:
@@ -18,12 +25,14 @@ spec:
       containers:
       - name: vul-app1
         image: fefefe8888/l4s-demo-app:1.0
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: vul-app1
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: vul-app1
 spec:
@@ -34,12 +43,14 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vul-app2
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: vul-app2
 spec:
@@ -55,12 +66,14 @@ spec:
       containers:
       - name: vul-app2
         image: fefefe8888/l4s-demo-app:1.0
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: vul-app2
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: vul-app2
 spec:
@@ -71,12 +84,14 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: att-svr
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: att-svr
 spec:
@@ -92,12 +107,14 @@ spec:
       containers:
       - name: att-svr
         image: fefefe8888/l4s-demo-svr:1.0
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: att-svr
-  namespace: dirty-net2
+  namespace: dirty-net
   labels:
     app: att-svr
 spec:
@@ -113,12 +130,14 @@ spec:
       protocol: TCP
       port: 8888
       targetPort: 8888
+
 ---
+
 apiVersion: v1
 kind: Pod
 metadata:
   name: pod-attack-machine
-  namespace: dirty-net2
+  namespace: dirty-net
 spec:
   containers:
   - name: attack-machine
