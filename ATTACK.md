@@ -19,7 +19,7 @@ kubectl config set-context $(kubectl config current-context) --namespace=dirty-n
 
 1. Get into the attacking host
 
-kubectl exec -it att-svr /bin/bash
+kubectl exec -it pod-attack-machine -n dirty-net -- /bin/sh
 
 2. Run the following two commands to execute the attack to the “vul-app1” container
 
